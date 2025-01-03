@@ -1,61 +1,31 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router";
-import About from "../pages/About";
-import Home from "../pages/Home";
-import MovieDetails from "../pages/MovieDetails";
-import SearchPage from "../pages/SearchPage";
+import { ReactNode } from "react";
+import SearchIcon from "../../assets/SearchIcon";
+
+function HeaderLink(props: {
+  text?: string;
+  href: string;
+  children?: ReactNode;
+}) {
+  return (
+    <a href={props.href} className="text-white hover:text-gray-400 transition-colors duration-300">
+      {props.text}
+      {props.children}
+    </a>
+  );
+}
+
 
 const Header = () => {
   return (
-    <div className="bg-gray-800 text-white min-h-screen flex flex-col items-center">
-      <Router>
-        <nav className="bg-gray-900 w-full px-6 py-6 shadow-md text-center">
-          <ul className="flex justify-center space-x-8 text-lg md:text-xl font-semibold">
-            <li>
-              <Link
-                to="/"
-                className="text-white hover:text-gray-400 transition-colors duration-300"
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/about"
-                className="text-white hover:text-gray-400 transition-colors duration-300"
-              >
-                About
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/moviedetails/info"
-                className="text-white hover:text-gray-400 transition-colors duration-300"
-              >
-                Movie Details
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/searchpage"
-                className="text-white hover:text-gray-400 transition-colors duration-300"
-              >
-                Search Page
-              </Link>
-            </li>
-          </ul>
-        </nav>
-
-        <main className="p-6 text-center w-full">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/moviedetails/:id" element={<MovieDetails />} />
-            <Route path="/searchpage" element={<SearchPage />} />
-          </Routes>
-        </main>
-      </Router>
-    </div>
+    <nav className="bg-gray-900 w-full px-6 py-6 shadow-md text-center flex justify-center gap-x-8 gap-y-2 text-lg md:text-xl font-semibold flex-wrap items-center">
+      <HeaderLink text="Home" href="/movie-catalog/" />
+      <HeaderLink text="About" href="/movie-catalog/about" />
+      <HeaderLink href="/movie-catalog/search-page">
+        <div className="w-6">
+          <SearchIcon />
+        </div>
+      </HeaderLink>
+    </nav>
   );
 };
 

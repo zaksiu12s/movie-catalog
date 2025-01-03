@@ -1,6 +1,3 @@
-import React from "react";
-import { Link } from "react-router";
-
 interface Movie {
   id: number;
   title: string;
@@ -29,12 +26,12 @@ const MovieCard = ({ movie }: MovieCardProps) => {
         <p className="text-sm mt-1">
           <strong>Rating:</strong> {movie.vote_average}
         </p>
-        <Link
-          to={`/moviedetails/${movie.id}`}
+        <a
+          href={`/movie-catalog/movie-details/${movie.id}`}
           className="inline-block mt-4 px-4 py-2 bg-blue-500 text-white text-sm font-medium rounded-md shadow hover:bg-blue-400 focus:ring-2 focus:ring-blue-300 focus:outline-none transition"
         >
           View Details
-        </Link>
+        </a>
       </div>
     </div>
   );
